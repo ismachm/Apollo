@@ -1,0 +1,911 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
+:root{
+  --theme: #BEA8E2;
+}
+
+body {
+  margin: 0;
+  font-family: Poppins,sans-serif;
+  background: #17171A;
+  color: white;
+  overflow: hidden;
+}
+
+.root{
+ margin-top: 50px;
+}
+
+.Apollo{
+  background-color: #17171A;
+  color: white;
+  -webkit-user-select: none;
+  font-family: Poppins, sans-serif;
+  height: 100vh;
+}
+
+.left-bar{
+  padding-top: 40px;
+  font-size: 15px;
+  background-color: #242528;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+  $height :100vh;
+  height: calc(#{$height} - 100px);
+}
+
+
+.content{
+  $height :100vh;
+  height: calc(#{$height} - 100px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  padding-top: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.Sign{
+  justify-content: center;
+}
+
+.SignIn, .SignUp, .home, .User, .explore{
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 0px;
+}
+
+.SignUp, .explore, .User{
+  margin-bottom: 20px;
+
+}
+
+.SignUp, .SignIn{
+  width: 80%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.SignIn{
+  font-weight: 500;
+  background: white;
+  color: #17171A;
+  margin-bottom: 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.SignIn:hover{
+  color: #17171A;
+  cursor: pointer;
+  filter: alpha(75%);
+  transition: 0.5s ease-in-out;
+}
+
+.SignUp{
+  font-weight: 500;
+  background: #626262;
+  color: white;
+  margin-bottom: 50px;
+  transition: 0.5s ease-in-out;
+}
+
+.SignUp:hover{
+  color: white;
+  cursor: pointer;
+  filter: alpha(75%);
+  transition: 0.5s ease-in-out;
+}
+
+.home{
+  margin-top: 0;
+}
+
+.home:hover, .songs:hover, .albums:hover, .artists:hover, .User:hover,  .explore:hover{
+  background-color: #3f4043;
+}
+
+.SignIn:focus, .SignUp:focus, .User:focus, .home:focus,.songs:focus,.albums:focus,.artists:focus, .explore:focus{
+  outline: none;
+}
+
+.home.active,.explore.active, .User.active, .songs.active, .albums.active, .artists.active{
+  color: var(--theme) !important;
+}
+.songs.active img,{
+  content: url("./assets/activeSongs.png");
+}
+.albums.active img{
+  content: url("./assets/activeAlbums.png");
+}
+.artists.active img{
+  content: url("./assets/activeArtists.png");
+}
+
+.lib, .play{
+  border-radius: 10px;
+  color: #7a7a7a;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.songs,.albums,.artists{
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 0px;
+  vertical-align: center;
+}
+
+.songs img{
+  content: url("./assets/songs.png");
+  margin-right:7px;
+}
+.albums img{
+  content: url("./assets/albums.png");
+  margin-right:7px;
+}
+.artists img{
+  content: url("./assets/artists.png");
+  margin-right:7px;
+}
+
+.main{
+  $height :100vh;
+  height: calc(#{$height} - 250px);
+}
+
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  z-index: 9999;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  background-position: center -610px !important;
+  background-size: cover;
+
+  .playerFilter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: brightness(20%) blur(7px);
+  }
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  width: 100%;
+  margin: 0;
+  z-index: 5;
+
+  .left{
+    left: 0;
+    display: flex !important;
+    align-items: center;
+    font-size: 18px !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+
+    img{
+      height: 80px;
+      width: 80px;
+      margin: 10px;
+    }
+
+    div{
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 20px;
+      width: 70%;
+
+      .trackArtist{
+        color: #a5a5a5;
+        font-size: 14px;
+        margin: 0;
+
+      }
+
+      .trackTitle{
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .center{
+    display: flex !important;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .ui.progress{
+      width: 80%;
+      background: #565656;
+      height: 5px;
+    }
+    .progress{
+      background: white;
+      height: 5px;
+    }
+    .controls{
+      margin-top: -10px;
+      margin-bottom: 10px;
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      i.bi{
+        color: white;
+        font-size: 32px;
+
+        &:hover {
+          color: #e2e2e2;
+        }
+      }
+    }
+  }
+
+  .right{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+
+    .vol{
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    i{
+      font-size: 20px;
+      margin-right: 15px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+
+    input[type='range'] {
+      background: linear-gradient(to right, white 0%, white 50%, #565656 50%, #565656 100%);
+      border-radius: 8px;
+      height: 5px;
+      outline: none;
+      transition: background 450ms ease-in;
+      -webkit-appearance: none;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      border-radius: 10px;
+      background: white !important;
+      box-shadow: -5px 0px 10px 0 rgba(0,0,0,0.5);
+    }
+
+  }
+
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  z-index: 99;
+}
+
+::-webkit-scrollbar-track {
+  background: #242528;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5a5a5a;
+  border-radius: 10px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.header{
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 99%;
+  position: relative;
+  z-index: 10 !important;
+}
+
+.navigation img{
+  border-radius: 50px;
+  padding: 5px;
+  right: 20px;
+  height: 32px;
+  width: 32px;
+  margin: 10px;
+  background: #17171a;
+}
+
+.navigation img:hover{
+  background-color: #242528;
+}
+
+.search{
+  border: 1px solid #3f4043;
+  background-color: #2a2a2a;
+  color: #c6c6c6;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+  left: 0;
+}
+
+.search:active, .search:focus{
+  border: 1px solid #3f4043;
+  background-color: white;
+  color: black;
+  outline: none;
+}
+
+.search::placeholder{
+  color: #c6c6c6;
+}
+
+.searchSectionTitle{
+  margin: 20px 30px;
+}
+
+
+.currentSong{
+  padding-left: 50px;
+}
+
+.volume{
+  text-align: right;
+  padding-right: 50px;
+}
+
+.controls{
+  text-align: center;
+}
+
+.darken{
+  position: absolute;
+  z-index: 99999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  transition: 0.5s ease-in ease-out;
+}
+
+.log,.passwordChange, .addArtist, .addAlbum, .addSong{
+  position: absolute;
+  z-index: 9999999;
+  background-color: black;
+  left: 35vw;
+  top: 10vh;
+  width: 30%;
+  height: 75%;
+  display: none;
+  transition: 0.5s ease-in ease-out;
+  box-shadow: -1px 1px 10px rgba(0,0,0,0.7);
+  background-image: url("/assets/login.png");
+  background-size: 100%;
+  background-repeat: repeat-x;
+  border-radius:30px;
+  overflow-y: auto;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+.addArtist, .addAlbum, .addSong{
+  border-radius: 30px 0px 0px 30px;
+}
+
+.logPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.log-apollo {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.logPage .head{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mail-input{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.email, .pass, .artistName, .artistInfo, .artistGenre, .albumTitle, .albumYear, .albumGenre{
+  background-color: black;
+  border-radius: 15px;
+  border: 2px solid #4e4e4e;
+  padding: 10px;
+  width: 70%;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.email::placeholder , .pass::placeholder, .artistName::placeholder, .artistInfo::placeholder, .artistGenre::placeholder, .albumTitle::placeholder, .albumYear::placeholder, .albumGenre::placeholder{
+  color: white;
+}
+
+.email:focus, .pass:focus, .artistName:focus, .artistInfo:focus, .artistGenre:focus, .albumTitle:focus, .albumYear:focus, .albumGenre:focus, .albumDropdown:focus{
+  border: 2px solid #bebebe;
+  outline: none;
+}
+
+.artistAvatar, .albumCover{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.artistsAvatar, .albumsCover{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 300px;
+  margin-bottom: 10px;
+  transition: .5s ease-in-out;
+}
+
+.artistsAvatar:hover, .albumsCover:hover{
+  filter: brightness(70%);
+}
+
+.albumDropdown{
+  background-color: black;
+  border-radius: 15px;
+  border: 2px solid #4e4e4e;
+  width: 70%;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+div.visible.menu.transition{
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.divider{
+  padding: 10px;
+}
+
+.selected{
+  background: #2a2a2a;
+}
+
+div.visible.menu.transition .item{
+  padding: 15px;
+  width: 100% !important;
+  border-bottom: 2px solid #2a2a2a;
+}
+
+div.visible.menu.transition .item:hover{
+  background: #222226;
+}
+
+.continue{
+  background-color: white;
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  width: 70%;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.continue:focus{
+  outline: none;
+}
+
+.continue:hover{
+  cursor: pointer;
+}
+
+.continue:disabled{
+  background: #121314;
+  color: white;
+}
+
+.logout{
+  background: white;
+  border-radius: 20px;
+  color: black;
+  padding: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  transition: 0.5s;
+}
+
+.logout:hover, .updatePassword:hover{
+  background: #d0d0d0;
+  color: black;
+  transition: 0.5s;
+}
+
+.userContent{
+  padding: 50px;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+.user-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 !important;
+
+  .ui.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 200px;
+    box-shadow: -1px 1px 20px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 35px;
+    transition: 0.5s;
+  }
+
+  .ui.image:hover{
+    cursor: pointer;
+    filter: brightness(80%);
+    transition: 0.5s;
+  }
+}
+
+.info{
+  padding: 20px;
+  padding-left: 50px;
+}
+
+.displayMail{
+  padding-bottom: 50px;
+}
+
+.updatePassword{
+  background: white;
+  border-radius: 20px;
+  color: black;
+  padding: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  transition: 0.5s;
+  border: none;
+  font-size: 1rem;
+  margin-left: 120px;
+}
+
+.add{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.addArtists{
+  padding-bottom: 15px;
+}
+
+.addAlbums{
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.addSongs{
+  padding-top: 15px;
+}
+
+.addArtists img, .addAlbums img, .addSongs img{
+  padding-bottom: 5px;
+  transition: 0.5s;
+}
+
+.addArtists img:hover, .addAlbums img:hover, .addSongs img:hover{
+  cursor: pointer;
+  transform: scale(1.15);
+  transition: 0.5s;
+}
+
+.signLink{
+  color: #68edff;
+  transition: all .2s ease-in-out;
+}
+
+.signLink:hover{
+  color: white;
+}
+
+.continue:disabled{
+  cursor: not-allowed;
+}
+
+.pageTitle{
+  margin-bottom: 50px;
+  margin-left: 20px;
+}
+
+.artistPageBannerContainer, .albumPageBannerContainer{
+  top: -115px;
+  z-index: 1 !important;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  height: 400px;
+  background-repeat: no-repeat !important;
+  background-position: center -150px!important;
+  background-size: cover !important;
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+
+.albumPageBannerContainer{
+  background-position: center -300px !important;
+}
+
+.artistPageGradient{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom,transparent 0%, transparent 50%,  rgba(0,0,0,0.8) 100%);
+}
+
+.albumPageGradient{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom,transparent 0%, transparent 50%,  rgba(0,0,0,0.8) 100%);
+  backdrop-filter: blur(5px) brightness(80%);
+}
+
+.albumPageCover{
+  width: 200px;
+  height: 200px;
+  background-size: cover !important;
+  background-position: center !important;
+  z-index: 5;
+}
+
+.albumPageInfo{
+  z-index: 5;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-top: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.artistPageBannerContainer h6, .artistPageBannerContainer h1{
+  z-index: 1;
+}
+
+.artistPageBannerContainer h1{
+  font-size: 80px;
+}
+
+.artistPageBannerContainer h6, .albumPageInfo h6{
+  font-size: 14px;
+  margin-left: 5px;
+}
+.albumPageInfo h1{
+  font-size: 70px;
+}
+
+.albumPageInfo h6{
+  color: #bababa;
+}
+
+.artistGridName, .albumGridName{
+  width: 200px;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.allArtists, .allAlbums{
+  $height :100vh;
+  height: calc(#{$height} - 100px);
+  align-items: center;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  text-align: center;
+}
+
+.grid-item{
+  padding: 10px !important;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.appTheme{
+  justify-content: center;
+  align-items: center;
+}
+
+.color{
+  height: 50px;
+  width: 50px;
+  border-radius: 200px;
+  margin: 50px;
+}
+
+.color:hover{
+  cursor: pointer;
+}
+
+.blue{
+  background: #70C8FF;
+}
+
+.yellow{
+  background: #FFCB70;
+}
+
+.pink{
+  background: #F098B3;
+}
+
+.purple{
+  background: #BEA8E2;
+}
+
+.orange{
+  background: #F89A75;
+}
+
+.green{
+  background: #66D397;
+}
+
+.slider{
+  margin-bottom: 100px;
+}
+
+.artistAlbums{
+  margin-top: -50px;
+  justify-content: left !important;
+}
+
+.sliderDiv:hover{
+  .playSong{
+    opacity: 1;
+  }
+}
+
+.playSong{
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+  position: absolute;
+  bottom: 23%;
+  margin-left: 120px;
+  z-index: 99;
+  &:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.playSong::before{
+  background: white;
+  border-radius: 50px;
+  box-shadow: 3px 3px 10px 0 rgba(0,0,0,0.3);
+  color: var(--theme) !important;
+  font-size: 40px;
+}
+
+.homeCoverImg{
+  position: relative;
+  z-index: 5;
+}
+
+
+.albumSongs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px;
+}
+
+.listSongs{
+  color: white;
+  width: 95%;
+}
+
+.listSongsHeaderRow{
+  font-size: 24px;
+  border-bottom: 2px solid white;
+  justify-content: center;
+  align-items: center;
+}
+
+.listSongsBodyRow{
+  border-radius: 20px !important;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.collapsing{
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  padding-left: 25px !important;
+  font-size: 24px;
+}
+
+.listSongsBodyRow:hover{
+  background: #3f4043;
+  color: var(--theme);
+}
+
+.songArtist{
+  font-size: 12px;
+  margin-bottom: 0 !important;
+  & a{
+    color: #d0d0d0;
+  }
+}

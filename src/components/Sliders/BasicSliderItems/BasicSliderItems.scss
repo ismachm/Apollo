@@ -1,0 +1,38 @@
+.slider{
+  margin-left: 5%;
+  font-size: 12px;
+  width: 90%;
+}
+
+.sliderListItem{
+  margin: 20px 0;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+}
+.sliderDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderListItem h6{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sliderArtistAvatar, .sliderAlbumAvatar{
+  width: 200px;
+  height: 200px;
+  border-radius: 13px;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  object-fit: cover !important;
+  padding: 10px;
+  z-index: 5;
+}
+
+.slick-track{
+  margin-left: 0 !important;
+}
